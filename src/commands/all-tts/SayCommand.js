@@ -37,11 +37,11 @@ class SayCommand extends SlashCommand {
     const { me: { voice: myVoice }, name: guildName, members, channels, roles } = interaction.guild;
     const { channel: memberChannel } = interaction.member.voice;
     const myChannel = myVoice?.channel;
-    const message = cleanMessage(interaction.options.getString('message'), {
+    const message = `${interaction.member.displayName} said ${cleanMessage(interaction.options.getString('message'), {
       members: members.cache,
       channels: channels.cache,
       roles: roles.cache
-    });
+    })}';
 
     if (!memberChannel) {
       await interaction.editReply(localizer.t('command.say.no_channel'));
