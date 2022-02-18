@@ -41,7 +41,7 @@ class SayCommand extends SlashCommand {
       members: members.cache,
       channels: channels.cache,
       roles: roles.cache
-    })}';
+    })}`;
 
     if (!memberChannel) {
       await interaction.editReply(localizer.t('command.say.no_channel'));
