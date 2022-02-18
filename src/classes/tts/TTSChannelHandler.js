@@ -41,11 +41,11 @@ class TTSChannelHandler {
     const { me: { voice: myVoice }, name: guildName, members, channels, roles } = message.guild;
     const { channel: memberChannel } = message.member.voice;
     const myChannel = myVoice?.channel;
-    const textToSay = cleanMessage(message.content, {
+    const textToSay = `${message.member.displayName} said ${cleanMessage(message.content, {
       members: members.cache,
       channels: channels.cache,
       roles: roles.cache
-    });
+    })}`;
 
     if (!memberChannel) {
       return message.reply(localizer.t('command.say.no_channel'));
